@@ -1,9 +1,7 @@
-// External Dependencies
 import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
-// Global Variables
+
 export const collections: { todos?: mongoDB.Collection } = {}
-// Initialize Connection
 
 export async function connectToTodosDatabase () {
     dotenv.config();

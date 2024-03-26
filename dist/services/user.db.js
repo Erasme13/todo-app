@@ -23,17 +23,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connectToTodosDatabase = exports.collections = void 0;
+exports.connectToUsersDatabase = exports.collections = void 0;
 const mongoDB = __importStar(require("mongodb"));
 const dotenv = __importStar(require("dotenv"));
 exports.collections = {};
-async function connectToTodosDatabase() {
+async function connectToUsersDatabase() {
     dotenv.config();
     const client = new mongoDB.MongoClient(process.env.DB_CONN_STRING ?? '');
     await client.connect();
     const db = client.db(process.env.DB_NAME);
-    const todosCollection = db.collection(process.env.TODOS_COLLECTION_NAME ?? '');
-    exports.collections.todos = todosCollection;
-    console.log(`Successfully connected to database: ${db.databaseName} and collection: ${todosCollection.collectionName}`);
+    const usersCollection = db.collection(process.env.USERS_COLLECTION_NAME ?? '');
+    exports.collections.users = usersCollection;
+    console.log(`Successfully connected to database: ${db.databaseName} and collection: ${usersCollection.collectionName}`);
 }
-exports.connectToTodosDatabase = connectToTodosDatabase;
+exports.connectToUsersDatabase = connectToUsersDatabase;
